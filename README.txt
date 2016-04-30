@@ -13,18 +13,6 @@ Step 1: Clone the repository
 
 $  git clone https://github.com/CurtiePi/Catalog.git catalog
 
-Note this will clone a number of projects along with the catlog project
-if you only want to have the catalog project related files then:
-
-Step 1b: 
-
-$ cd  catalog
-$ git filer-brance --prune-empty --subdirectory-filter vagrant/catalog HEAD
-
-NOTE if you do not perform Step 1b then you must 
-$ cd catalog/vagrant/catalog
-
-to get to the files needed for this project
 The structure of this project is as follows
 catalog
 |
