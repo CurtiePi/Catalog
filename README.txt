@@ -11,7 +11,7 @@ How to run this project:
 
 Step 1: Clone the repository
 
-$  git clone https://github.com/CurtiePi/fullstack-nanodegree-vm.git catalog
+$  git clone https://github.com/CurtiePi/Catalog.git catalog
 
 Note this will clone a number of projects along with the catlog project
 if you only want to have the catalog project related files then:
