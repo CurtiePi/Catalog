@@ -12,10 +12,8 @@ Application can be accessed in a browser via the following url:
 *Web URL*: http://ec2-52-39-197-108.us-west-2.compute.amazonaws.com/
 
 ### SOFTWARE INSTALLED
-**finger**
-configuration changes: NONE
-
 **apache2**
+
 configuration changes:
 
 * **Change the server name**:
@@ -60,39 +58,39 @@ configuration changes:
     ```
 
 **libapache2-mod-wsgi**
+
 Configuration changes:
 
 * Create a wsgi file called **catalog.wsgi** 
   * Added import statement to import the app in project.py as application
 
-**python-psycopg2**
-Configuration changes: NONE
+
 
 **git**
+
 Configuration changes:
 
 * modified .gitignore to include .pyc files
 
+**The following installed packeage have no configuration changes**:
+
+**finger**
+
+**python-psycopg2**
+
 **python-flask**
-Configuration changes: NONE
 
 **python-sqlalchemy**
-Configuration changes: NONE
 
 **python-flask-sqlalchemy**
-Configuration changes: NONE
 
 **python-werkzeug**
-Configuration changes: NONE
 
 **python-oauth2client**
-Configuration changes: NONE
 
 **postgresql-9.3**
-Configuration changes: NONE
 
 **python-loggingx**
-Configuration changes: NONE
 
 ### About this project:
 
