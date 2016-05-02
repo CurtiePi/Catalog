@@ -1,6 +1,12 @@
+import logging, logging.handlers
+logging.basicConfig(filename='/var/log/python2.7/catalog.log',
+                    format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
+
 from flask import Flask, render_template, request, redirect, jsonify, url_for, flash
 from werkzeug.utils import secure_filename
 from datetime import datetime, timedelta
+
 
 # Constants used for uploading an image
 IMAGE_FOLDER="static/images/"
@@ -11,6 +17,7 @@ app = Flask(__name__)
 
 from sqlalchemy import create_engine, asc
 from sqlalchemy.orm import sessionmaker
+
 from database_setup import Base, Category, Equipment, User
 
 #More imports to help with session handling
@@ -36,19 +43,21 @@ from flask import make_response
 import requests
 
 CLIENT_ID = json.loads(  \
-     open('client_secrets.json', 'r').read())['web']['client_id']
+     open('/usr/local/www/wsgi-scripts/catalog/client_secrets.json', 'r').read())['web']['client_id']
 
 #Connect to Database and create database session
-engine = create_engine('sqlite:///sportinggoods.db')
+#engine = create_engine('sqlite:///sportinggoods.db')
+#engine = create_engine('postgresql:///goodscatalog')
+engine = create_engine('postgresql://catalog:catal0g@localhost:5432/goodscatalog')
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
-
+session.rollback()
 
 @app.route('/login')
 def showLogin():
-    print "LET'S GET SOME GRUB!"
+    logging.info('LET\'S GET SOME GRUB!')
     state = ''.join(random.choice(string.ascii_uppercase + string.
         digits) for x in xrange(32))
     login_session['state'] = state
@@ -195,9 +204,9 @@ def fbconnect():
     # GET /oauth/access_token?grant_type=fb_exchange_token&client_id={app-id}&
     # client_secret={app-secret}&fb_exchange={short-lived-token}
     app_id = \
-      json.loads(open('fb_client_secrets.json', 'r').read())['web']['app_id']
+      json.loads(open('/usr/local/www/wsgi-scripts/catalog/fb_client_secrets.json', 'r').read())['web']['app_id']
     app_secret = \
-     json.loads(open('fb_client_secrets.json', 'r').read())['web']['app_secret']
+     json.loads(open('/usr/local/www/wsgi-scripts/catalog/fb_client_secrets.json', 'r').read())['web']['app_secret']
 
     url = 'https://graph.facebook.com/oauth/access_token?' 
     url += 'grant_type=fb_exchange_token&client_id=%s&' % app_id 
@@ -535,4 +544,4 @@ if __name__ == '__main__':
     app.secret_key='TheQuickBrownFoxJumpsOverTheLazyDog!'
     app.config['IMAGE_FOLDER'] = IMAGE_FOLDER
     app.config['DEFAULT_IMAGE'] = DEFAULT_IMAGE
-    app.run(host = '0.0.0.0', port = 5000)
+    app.run()
