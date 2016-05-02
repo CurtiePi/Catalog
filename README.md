@@ -94,6 +94,16 @@ The following installed packeages have no configuration changes:
 
 **python-loggingx**
 
+
+Also made the following configuration changes to **/etc/ssh/sshd_config**:
+
+* Prevent login with password
+** PasswordAuthentication no
+
+* Prevent login as root
+** PermitRootLogin no
+** DenyUsers root
+
 ### About this project:
 
 ####The structure of this project is as follows
