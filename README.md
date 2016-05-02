@@ -20,11 +20,11 @@ configuration changes: NONE
 
 configuration changes:
 
-* *Change the server name*:
+* **Change the server name**:
 
-ServerName "52.39.197.108"
+    ServerName "52.39.197.108"
 
-* *Root should not give 'permission denied' message*
+* **Browsing to / should not give 'permission denied' message**
 ```
 <Directory />
     Options Indexes FollowSymLinks Includes ExecCGI
@@ -41,13 +41,11 @@ ServerName "52.39.197.108"
         Allow from all
 </Directory>
 ```
-* *Updated .htaccess to disallow access to .git*
+* **Updated .htaccess to disallow access to .git**
 
-RedirectMatch 404 /\.git
+    RedirectMatch 404 /\.git
 
-* *Create application configuration file*: 
- 
-/etc/apache2/sites-available/catalog.conf
+* **Create application configuration file**: */etc/apache2/sites-available/catalog.conf*
 
 Application specific error logs:
 ```
@@ -62,48 +60,48 @@ Define script location also define path of python modules:
         WSGIProcessGroup 52.39.197.108
 ```
 
-*libapache2-mod-wsgi*
+**libapache2-mod-wsgi**
 
 Configuration changes:
 
-Create a wsgi file called *catalog.wsgi* 
+Create a wsgi file called **catalog.wsgi** 
 
 Added import statement to import the app in project.py as application
 
-*python-psycopg2*
+**python-psycopg2**
 
 Configuration changes: NONE
 
-*git*
+**git**
 Configuration changes:
 
 modified .gitignore to include .pyc files
 
-*python-flask*
+**python-flask**
 
 Configuration changes: NONE
 
-*python-sqlalchemy*
+**python-sqlalchemy**
 
 Configuration changes: NONE
 
-*python-flask-sqlalchemy*
+**python-flask-sqlalchemy**
 
 Configuration changes: NONE
 
-*python-werkzeug*
+**python-werkzeug**
 
 Configuration changes: NONE
 
-*python-oauth2client*
+**python-oauth2client**
 
 Configuration changes: NONE
 
-*postgresql-9.3*
+**postgresql-9.3**
 
 Configuration changes: NONE
 
-*python-loggingx*
+**python-loggingx**
 
 Configuration changes: NONE
 
