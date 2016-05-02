@@ -98,11 +98,11 @@ The following installed packeages have no configuration changes:
 Also made the following configuration changes to **/etc/ssh/sshd_config**:
 
 * Prevent login with password
-** PasswordAuthentication no
+ * PasswordAuthentication no
 
 * Prevent login as root
-** PermitRootLogin no
-** DenyUsers root
+ * PermitRootLogin no
+ * DenyUsers root
 
 ### About this project:
 
