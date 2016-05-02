@@ -7,18 +7,21 @@ This project is located on a remote server.
 
 *SSH command*: ssh grader@52.39.197.108 -p 2200
 
-Application can be accessed in a browser via the folloing url:
+Application can be accessed in a browser via the following url:
 
 *Web URL*: http://ec2-52-39-197-108.us-west-2.compute.amazonaws.com/
 
 ### SOFTWARE INSTALLED
 *finger*
+
 configuration changes: NONE
 
 *apache2*
+
 configuration changes:
 
 * *Change the server name*:
+
 ServerName "52.39.197.108"
 
 * *Root should not give 'permission denied' message*
@@ -39,9 +42,12 @@ ServerName "52.39.197.108"
 </Directory>
 ```
 * *Updated .htaccess to disallow access to .git*
+
 RedirectMatch 404 /\.git
 
-* *Create application configuration file: /etc/apache2/sites-available/catalog.conf*
+* *Create application configuration file*: 
+ 
+/etc/apache2/sites-available/catalog.conf
 
 Application specific error logs:
 ```
@@ -57,36 +63,48 @@ Define script location also define path of python modules:
 ```
 
 *libapache2-mod-wsgi*
+
 Configuration changes:
 
-Create a wsgi file called *catalog.wsgi* and import the app in project.py as application
+Create a wsgi file called *catalog.wsgi* 
+
+Added import statement to import the app in project.py as application
 
 *python-psycopg2*
+
 Configuration changes: NONE
 
 *git*
 Configuration changes:
+
 modified .gitignore to include .pyc files
 
 *python-flask*
+
 Configuration changes: NONE
 
 *python-sqlalchemy*
+
 Configuration changes: NONE
 
 *python-flask-sqlalchemy*
+
 Configuration changes: NONE
 
 *python-werkzeug*
+
 Configuration changes: NONE
 
 *python-oauth2client*
+
 Configuration changes: NONE
 
 *postgresql-9.3*
+
 Configuration changes: NONE
 
 *python-loggingx*
+
 Configuration changes: NONE
 
 
@@ -131,17 +149,17 @@ catalog
 
 ####The database has 3 tables:
 
-User
+*User*
 - id      integer
 - name    string
 - picture string
 - email   string
 
-Category
+*Category*
 - id      integer
 - name    string
 
-Equipment
+*Equipment*
 - id      integer
 - name    string
 - price   string
@@ -161,35 +179,31 @@ The main screen should have two parts:
 1. Categories
 2. Equipment listing
 
-The first listing is equipment recently added to the database, currently set at anyting 
-added less than 16 hours from the current time.
+The first listing is equipment recently added to the database, currently set at anyting added less than 16 hours from the current time.
 
 Clicking on a category will list all the euipment in that category, 
 
 Clicking on the equipmnt will take you to a detailed description page.
 
-None of the above screens allows the user to edit, or add information. In order
-to edit, delete or create new equipment entries the user must log in.
+None of the above screens allows the user to edit, or add information. In order to edit, delete or create new equipment entries the user must log in.
 
 Logging in utilizes both facebook and google authentication.
 
-Once a user is authenticated via google or facebook the my create equipment from the 
-Category Equipment listing page - equipment.html
+Once a user is authenticated via google or facebook the my create equipment from the Category Equipment listing page - equipment.html
 
 The user may delete or edit equipment from:
+
 Equipment Detail page - equipmentdetail.html
+
 Category Equipment listing page - equipment.html
 
-When they user logs in the session is populated with user information which can be used
-later. When the user disconnects, the session data is cleared.
+When they user logs in the session is populated with user information which can be used later. When the user disconnects, the session data is cleared.
 
-Note when a user edits, adds equipment if no image is assigned the equipment will be given
-a default image. Also the application will create category specific directories to hold the 
-images for equipment in that category. Uploading a new image will remove the old image and 
-deleting the equipment will remove its related image unless it's a default image.
+Note when a user edits, adds equipment if no image is assigned the equipment will be given a default image. Also the application will create category specific directories to hold the images for equipment in that category. Uploading a new image will remove the old image and deleting the equipment will remove its related image unless it's a default image.
 
 
-Some private notes:
+####Some private notes:
+
 1. Originally this project used sqlite for the database, changing to postgresql became a challenge the main one being
 that sqlalchemy's create_engine for sqllite uses the following syntax for the url parameter:
 
