@@ -3,13 +3,15 @@ This project is located on a remote server.
 
 
 ### Connecting to the Server
-*Server IP*: 52.39.197.108
+**Server IP**: 52.39.197.108
 
-*SSH command*: ssh grader@52.39.197.108 -p 2200
+**SSH command**: ssh -i ~/.ssh/udacity_key.rsa grader@52.39.197.108 -p 2200
+
+*(The udacity_key.rsa file should be provided to you)*
 
 Application can be accessed in a browser via the following url:
 
-*Web URL*: http://ec2-52-39-197-108.us-west-2.compute.amazonaws.com/
+**Web URL**: http://ec2-52-39-197-108.us-west-2.compute.amazonaws.com/
 
 ### SOFTWARE INSTALLED
 **apache2**
