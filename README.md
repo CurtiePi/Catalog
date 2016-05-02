@@ -186,32 +186,31 @@ Note when a user edits, adds equipment if no image is assigned the equipment wil
 
 
 ####Some private notes:
+1. Another issue was getting the server to recognize the modules, which led to the aforemention configuration changes in 
+/etc/apache2/sites-available/catalog.conf file.
 
-1. Originally this project used sqlite for the database, changing to postgresql became a challenge the main one being
-that sqlalchemy's create_engine for sqllite uses the following syntax for the url parameter:
+2. Also this project originally used sqlite for the database, changing to postgresql became a challenge because sqlalchemy's create_engine for sqllite uses the following syntax for the url parameter:
 
-<pre>
+```
 'sqlite:///dbname'
-</pre>
+```
 
 whereas for postgressql the syntax is:
 
-<pre>
+```
 'postgresql://user:password@server:port/dbname'
-</pre>
+```
 
 Why was this an issue? Because the follwing syntax will also work:
 
-<pre>
+```
 'postgresql:///dbname'
-</pre>
+```
 
 and I (like an idiot) tried using this syntax:
-<pre>
+```
 'postgresql:///user:password@server:port/dbname'
-</pre>
+```
 
-which only throws an OperationalException database user:password@server:port/dbname does not exist.
+which only throws an **OperationalException database 'user:password@server:port/dbname' does not exist** exception.
 
-2. Another issue was getting the server to recognize the modules, which led to the aforemention configuration changes in 
-/etc/apache2/sites-available/catalog.conf file.
