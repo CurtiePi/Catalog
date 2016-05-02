@@ -72,7 +72,7 @@ Configuration changes:
 
 * modified .gitignore to include .pyc files
 
-**The following installed packeage have no configuration changes**:
+The following installed packeages have no configuration changes:
 
 **finger**
 
