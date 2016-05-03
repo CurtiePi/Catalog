@@ -103,6 +103,13 @@ Also made the following configuration changes to **/etc/ssh/sshd_config**:
 * Prevent login as root
  * PermitRootLogin no
  * DenyUsers root
+ * 
+ 
+In addition, created a sudoers file for the user grader **/etc/sudoers.d/grader**:
+
+```
+grader ALL=(ALL) PASSWD:ALL
+```
 
 ### About this project:
 
